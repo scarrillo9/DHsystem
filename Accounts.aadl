@@ -1,0 +1,37 @@
+package Accounts
+public
+	device Authentication
+		features
+			au: out data port;
+	end Authentication;
+	
+	device AccountSettings
+		features
+			au_as: in data port;
+			ac_as: in data port;
+	end AccountSettings;
+	
+	device AccessControl
+		features
+			config_ac: in data port;
+			ac: out data port;
+	end AccessControl;
+	
+	system DHaccounts
+		features
+			web_acc: in data port;
+			br_acc: in data port;
+			config_acc: in data port;
+	end DHaccounts;
+	
+	system implementation DHaccounts.impl
+		subcomponents
+			Authentication: device Authentication;
+			AccountSettings: device AccountSettings;
+			AccessControl: device AccessControl;
+		connections
+			DHaccounts_impl_new_connection: port Authentication.au -> AccountSettings.au_as;
+			DHaccounts_impl_new_connection2: port AccessControl.ac -> AccountSettings.ac_as;
+			DHaccounts_impl_new_connection3: port config_acc -> AccessControl.config_ac;
+	end DHaccounts.impl;
+end Accounts;
