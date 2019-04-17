@@ -122,7 +122,9 @@ public
 			dm_pow: out data port;
 			dm_sec: out data port;
 			dm_thermo: out data port;
+			dm_seOUT: out data port;
 			gatewayOUT_dm: in data port;
+			pmOUT_dm: in data port;
 	end deviceManager;
 	
 	system DHdevices
@@ -145,6 +147,8 @@ public
 			DHdevices_impl_new_connection3: port DeviceManager.dm_pow -> PowerDevices.dm_pow;
 			DHdevices_impl_new_connection4: port DeviceManager.dm_hum -> HumidityDevices.dm_hum;
 			DHdevices_impl_new_connection5: port comm_device -> DeviceManager.gatewayOUT_dm;
+			DHdevices_impl_new_connection6: port pm_device -> DeviceManager.pmOUT_dm;
+			DHdevices_impl_new_connection7: port DeviceManager.dm_seOUT -> device_se;
 	end DHdevices.impl;
 	
 end Devices;

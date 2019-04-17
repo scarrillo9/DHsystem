@@ -43,10 +43,13 @@ public
 			cm_plan: out data port;
 			cm_ss: out data port;
 			cm_outCM: out data port;
+			cm_outACC: out data port;
 			cm_hp: out data port;
 			cm_rep: out data port;
 			cm_apm: out data port;
 			webOUT_cm: in data port;
+			brOUT_cm: in data port;
+			pmOUT_cm: in data port;
 	end commManager;
 	
 	device report
@@ -93,6 +96,9 @@ public
 			DHconfig_impl_new_connection14: port Report.rep_apm -> ProgrammableApplianceManager.rep_apm;
 			DHconfig_impl_new_connection15: port web_config -> ConfigurationManager.webOUT_cm;
 			DHconfig_impl_new_connection16: port ConfigurationManager.cm_outCM -> config_cm;
+			DHconfig_impl_new_connection17: port br_config -> ConfigurationManager.brOUT_cm;
+			DHconfig_impl_new_connection18: port pm_config -> ConfigurationManager.pmOUT_cm;
+			DHconfig_impl_new_connection19: port ConfigurationManager.cm_outACC -> config_acc;
 	end DHconfig.impl;
 	
 end Configurations;
